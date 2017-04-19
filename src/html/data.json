@@ -1,0 +1,10 @@
+{
+  "siteName": "Kickstarter-static",
+  "metaAuthor": "Lee Marsden",
+
+  "pages": {
+    "index": {
+      "title": "Playings - Home"
+    }
+  }
+}

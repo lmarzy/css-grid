@@ -1,0 +1,32 @@
+{
+  "name": "kickstarter-static",
+  "version": "1.0.0",
+  "description": "Kickstarter for a simple static site build",
+  "main": "index.js",
+  "repository": "https://github.com/lmarzy/kickstarter-static.git",
+  "author": "Lee Marsden",
+  "license": "MIT",
+  "scripts": {
+    "clean": "echo '=> cleaning' && rm -rf dist",
+    "html": "nunjucks *.tpl -p src/html -o dist src/html/data.json",
+    "stylelint": "stylelint 'src/css/**/**/*.scss' --syntax scss",
+    "css": "node-sass src/css/main.scss -o dist/css",
+    "postcss:autoprefixer": "postcss -u autoprefixer -b 'last 2 version' -r dist/css/*.css",
+    "postcss:vr": "postcss -u postcss-vr -r dist/css/*.css",
+    "postcss:pxToRem": "postcss -u postcss-pxtorem -r dist/css/*.css",
+    "postcss:focus": "postcss -u postcss-focus -r dist/css/*.css",
+    "css:build": "npm run css && npm run postcss:autoprefixer && npm run postcss:vr && npm run postcss:pxToRem && npm run postcss:focus",
+    "build": "npm run clean && npm run html && npm run css:build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "node-sass": "^4.5.2",
+    "nunjucks-cli": "^0.5.1",
+    "postcss-cli": "^3.1.1",
+    "postcss-focus": "^1.0.0",
+    "postcss-pxtorem": "^4.0.0",
+    "postcss-vr": "^3.0.1",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0"
+  }
+}
