@@ -22,6 +22,18 @@ body {
 
 .div {
   font-size: 20px;
+
+  @include bp(10) {
+    font-size: 30px;
+  }
+}
+
+.divtwo {
+  font-size: 30px;
+
+  @include bp(10) {
+    font-size: 40px;
+  }
 }
 
 // CSS Organisation

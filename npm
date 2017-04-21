@@ -1,4 +1,0 @@
-
-> kickstarter-static@1.0.0 postcss:autoprefixer /Users/lmarsden/github/kickstarters/kickstarter-static
-> postcss -u autoprefixer -b 'last 2 version' -r dist/css/*.css "run" "postcssVr" "run" "postcssPxToRem" "run" "postcssFocus"
-
