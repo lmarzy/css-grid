@@ -14,28 +14,6 @@
 @import "07-components/_imports";
 @import "08-utilities/_imports";
 
-body {
-  &:hover {
-    background: red;
-  }
-}
-
-.div {
-  font-size: 20px;
-
-  @include bp(10) {
-    font-size: 30px;
-  }
-}
-
-.divtwo {
-  font-size: 30px;
-
-  @include bp(10) {
-    font-size: 40px;
-  }
-}
-
 // CSS Organisation
 
 // .selector {

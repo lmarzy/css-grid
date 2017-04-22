@@ -9,15 +9,26 @@
   "scripts": {
     "clean": "echo '=> cleaning' && rm -rf dist",
     "html": "nunjucks *.tpl -p src/html -o dist src/html/data.json",
-    "stylelint": "stylelint 'src/css/**/**/*.scss' --syntax scss",
-    "css": "mkdir dist/css && node-sass src/css/main.scss | postcss -u autoprefixer -b 'last 2 versions' | postcss -u postcss-vr | postcss -u postcss-pxtorem | postcss -u postcss-focus | postcss -u css-mqpacker > dist/css/main.css",
+    "css": "stylelint 'src/css/**/**/*.scss' --syntax scss && mkdir -p dist/css && node-sass src/css/main.scss | postcss -u autoprefixer -b 'last 2 versions' | postcss -u postcss-vr | postcss -u postcss-pxtorem | postcss -u postcss-focus | postcss -u css-mqpacker > dist/css/main.css",
+    "images": "imagemin src/images/* -o dist/img",
+    "js": "eslint src/js/**/*.js && mkdir -p dist/js && browserify src/js/main.js -o dist/js/main.js -t [ babelify --presets [ es2015 ] ]",
+    "htmlMin": "html-minifier --input-dir dist --output-dir dist --collapse-whitespace --file-ext html",
     "postcss:csso": "postcss -u postcss-csso -r dist/css/*.css --no-map",
-    "build:dev": "npm run clean && npm run clean && npm run html && npm run css",
-    "build:prod": "npm run clean && npm run build:dev && npm run postcss:csso"
+    "uglify": "uglifyjs dist/js/*.js -m -c -o dist/js/*.js",
+    "build:dev": "npm run clean && npm run html && npm run css && npm run js",
+    "build:prod": "npm run clean && npm run build:dev && npm run htmlMin && npm run postcss:csso && npm run uglify",
+    "serve": "browser-sync start --server 'dist' --files 'dist/*.html, dist/css/*.css, dist/js/*.js'"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
     "css-mqpacker": "^5.0.1",
+    "eslint": "^3.19.0",
+    "html-minifier": "^3.4.3",
+    "imagemin-cli": "^3.0.0",
     "node-sass": "^4.5.2",
     "nunjucks-cli": "^0.5.1",
     "postcss": "^5.2.17",
@@ -27,6 +38,7 @@
     "postcss-pxtorem": "^4.0.0",
     "postcss-vr": "^3.0.1",
     "stylelint": "^7.10.1",
-    "stylelint-config-standard": "^16.0.0"
+    "stylelint-config-standard": "^16.0.0",
+    "uglify-js": "^2.8.22"
   }
 }
