@@ -10,7 +10,7 @@
     "clean": "echo '=> cleaning' && rm -rf dist",
     "test": "mocha --require babel-core/register src/js/**/*.test.js",
     "html": "nunjucks *.tpl -p src/html -o dist src/html/data.json",
-    "css": "stylelint 'src/css/**/**/*.scss' --syntax scss && mkdir -p dist/css && node-sass src/css/main.scss | postcss -u autoprefixer -b 'last 2 versions' | postcss -u postcss-vr | postcss -u postcss-pxtorem | postcss -u postcss-focus | postcss -u css-mqpacker > dist/css/main.css",
+    "css": "stylelint 'src/css/**/**/*.scss' --syntax scss && mkdir -p dist/css && node-sass src/css/main.scss | postcss -u autoprefixer -b 'last 2 versions' --no-map | postcss -u postcss-vr --no-map | postcss -u postcss-pxtorem --no-map | postcss -u postcss-focus --no-map | postcss -u css-mqpacker --no-map > dist/css/main.css",
     "js": "eslint src/js/**/*.js && mkdir -p dist/js && browserify src/js/main.js -o dist/js/main.js -t [ babelify ]",
     "images": "imagemin src/images/* -o dist/img",
     "images:css": "imagemin src/css/images/* -o dist/css/img",
