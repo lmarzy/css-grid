@@ -9,9 +9,7 @@
   "scripts": {
     "clean": "echo '=> cleaning' && rm -rf dist",
     "test": "mocha --require babel-core/register src/js/**/*.test.js",
-
     "html": "nunjucks *.tpl -p src/html -o dist src/html/data.json",
-
     "stylelint": "stylelint 'src/css/**/**/*.scss' --syntax scss",
     "sass": "node-sass --source-map=true src/css/main.scss -o dist/css/",
     "postcss:autoprefixer": "postcss -u autoprefixer -b 'last 2 versions' -r dist/css/*.css",
@@ -20,25 +18,19 @@
     "postcss:focus": "postcss -u postcss-focus -r dist/css/*.css",
     "postcss:mqpacker": "postcss -u css-mqpacker -r dist/css/*.css",
     "css": "npm run stylelint && npm run sass && npm run postcss:autoprefixer && npm run postcss:vr && npm run postcss:pxtorem && npm run postcss:focus && npm run postcss:mqpacker",
-
     "js": "eslint src/js/**/*.js && mkdir -p dist/js && browserify src/js/main.js -o dist/js/main.js -t [ babelify ]",
-
     "images": "imagemin src/images/* -o dist/img",
     "images:css": "imagemin src/css/images/* -o dist/css/img",
-
     "htmlMin": "html-minifier --input-dir dist --output-dir dist --collapse-whitespace --file-ext html",
     "postcss:csso": "postcss -u postcss-csso -r dist/css/*.css --no-map",
     "uglify": "uglifyjs dist/js/*.js -m -c -o dist/js/*.js",
-
     "watch:html": "onchange 'src/html/**/*.tpl' -- npm run html",
     "watch:css": "onchange 'src/css/**/**/*.scss' -- npm run css",
     "watch:js": "onchange 'src/js/**/*.js' -- npm run js",
     "watch:images": "onchange 'src/images/*' -- npm run images",
     "watch:imagesCss": "onchange 'src/css/images/*' -- npm run images:css",
-
     "build:dev": "npm run clean && parallelshell 'npm run html' 'npm run css' 'npm run js' 'npm run images' 'npm run images:css'",
     "build:prod": "npm run build:dev && parallelshell 'npm run htmlMin' 'npm run postcss:csso' 'npm run uglify'",
-
     "serve": "browser-sync start --server 'dist' --files 'dist/*.html, dist/css/*.css, dist/css/images/*, dist/js/*.js, dist/images/*'",
     "serve:dev": "npm run build:dev && parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:images' 'npm run watch:imagesCss'",
     "serve:prod": "npm run build:prod && npm run serve"
@@ -54,8 +46,10 @@
     "eslint": "^3.19.0",
     "html-minifier": "^3.4.3",
     "imagemin-cli": "^3.0.0",
+    "install": "^0.8.9",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
+    "npm": "^4.5.0",
     "nunjucks-cli": "^0.5.1",
     "onchange": "^3.2.1",
     "parallelshell": "^2.0.0",
