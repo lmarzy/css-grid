@@ -1,0 +1,9 @@
+// 07/COMPONENTS - COL
+
+.c-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $gutter 0;
+  border: 1px solid darken($bg, 10);
+}

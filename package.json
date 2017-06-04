@@ -1,9 +1,9 @@
 {
-  "name": "kickstarter-static",
+  "name": "css-grid",
   "version": "1.0.0",
-  "description": "Kickstarter for a simple static site build",
+  "description": "CSS Grid system using CSS Grid for the blog post css-grid-with-css",
   "main": "index.js",
-  "repository": "https://github.com/lmarzy/kickstarter-static.git",
+  "repository": "https://github.com/lmarzy/css-grid.git",
   "author": "Lee Marsden",
   "license": "MIT",
   "scripts": {

@@ -1,0 +1,14 @@
+// 07/COMPONENTS - GRID-SECTION
+
+.c-gridSection {
+  margin-bottom: $rhythm * 2;
+  padding-bottom: $rhythm;
+  border-bottom: 1px solid darken($text, 10);
+
+  &_title {
+    @include vr(18px, 1, 1);
+
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

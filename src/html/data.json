@@ -1,10 +1,10 @@
 {
-  "siteName": "Kickstarter-static",
+  "siteName": "CSS Grid",
   "metaAuthor": "Lee Marsden",
 
   "pages": {
     "index": {
-      "title": "Playings - Home"
+      "title": "CSS grid system with CSS grid"
     }
   }
 }
